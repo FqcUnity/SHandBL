@@ -1,0 +1,67 @@
+<html>
+  <head>
+ <script language="javascript">
+ 	//关联人物主动技能
+  function selectSkill(){
+   with(document.role){
+    var skill = new Array();
+    skill["0"] = ["--请选择技能--"];
+    skill["1"] = ["强力一击","舍身"];
+    skill["2"] = ["背刺","血刃"];
+    var value = role.value;
+    iniskill.options.length = 0;
+    var option;
+    for(i = 0;i < skill[value].length;i++){
+     option = new Option(skill[value][i],skill[value][i]);
+     iniskill.options.add(option);
+    }
+    if(role.value == "0")
+     iniskill.disabled = true;
+    else
+     iniskill.disabled = false;
+   }
+  }
+  //关联人物被动技能
+  function selectBuff(){
+   with(document.role){
+    var buff = new Array();
+    buff["0"] = ["--请选择被动技能--"];
+    buff["1"] = ["防御上升","力量上升"];
+    buff["2"] = ["命中上升","回避上升"];
+    var value = role.value;
+    buffer.options.length = 0;
+    var option;
+    for(i = 0;i < buff[value].length;i++){
+     option = new Option(buff[value][i],buff[value][i]);
+     buffer.options.add(option);
+    }
+    if(role.value == "0")
+     buffer.disabled = true;
+    else
+     buffer.disabled = false;
+   }
+  }
+ </script>
+  </head>
+  <body>
+ <form method="post" action="fight.html" name="role">
+  <div>    
+    选择角色：<select name="role" onChange="selectBuff();selectSkill();">
+      <option value="0">---请选择角色--</option>
+      <option value="1" title="you kiss my ass">战士</option>
+      <option value="2" title="i m the shadow,behind your ass">刺客</option>
+       </select>
+  </div>
+  <div>主动技能：<select name="iniskill">
+       <option>--请先选择角色-</option>
+      </select>
+  <div>被动技能：<select name="buffer">
+       <option>--请先选择角色-</option>
+      </select>
+  </div>
+  <div>
+  	<input type="submit" name="submit" value="出城">
+  </div>
+</form>
+  </body>
+</html>
